@@ -2,65 +2,110 @@ import React, { Component } from 'react';
 import uuid from 'uuid';
 import { hot } from 'react-hot-loader';
 //import style from './App.css';
-//import Tile from '../components/Tile';
 import Board from '../components/Board';
 import sudoku from 'sudoku-umd';
 
 
 class App extends Component {
-    constructor(props){
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.state = {
+		this.state = {
 			initialBoard: '',
-			board: ''
-		  }
-	}
-	
-   	reset = () => {
-      const resetState = (this.state.board = '');
-        this.setState({resetState});
-    }
-
-	solve = () => {
-        const solved = sudoku.solve(this.state.board)
-        this.setState({board: solved});
+			board: '',
+			level: '',
+		}
 	}
 
-    generate = () => {
-		const generateState = sudoku.generate("easy") 
+	generate = () => {
+		const generateState = sudoku.generate(this.state.level)
 		this.setState({
 			initialBoard: generateState,
 			board: generateState
 		});
 	}
+	
+	solve = () => {
+		const solved = sudoku.solve(this.state.board)
+		if(solved) {
+			this.setState({ board: solved});
+		}else{
+			alert('There must be error in your solution...')
+		}
+	}
+	
+	check = () => {
+		const checked = sudoku.solve(this.state.board)
+		if (checked) {
+			alert('All good !!! Keep going this way')
+		}else (
+			alert('You lame!')
+			)
+		}
+		
+		
+		handleChange = event => {
+			this.setState({ level: event.target.value });
+		}
+		
+		handleInputValue = (event, id) => {
+			
+			const inputId = event.target.id
+			const inputValue = Number(event.target.value++)
+			const board = this.state.board;
+			
+			const newArray = Object.assign([], board, {[inputId]: inputValue });
+			
+			console.log("id " + inputId)
+			console.log("inputValue " + inputValue)
+			console.log("present board state " + this.state.board)
+			
+			this.setState({
+				board: newArray.join("")
+			});
+			
+		}
+				reset = () => {
+					const resetState = (this.state.board = this.state.initialBoard);
+					this.setState({ board: resetState });
+				}
+		
+		render() {
+			console.log('New state board ' + this.state.board)
 
-	/*
-	>>> sudoku.generate("easy")
-	"672819345193..4862485..3197824137659761945283359...714.38..1426.174.6.38.463...71"
-	 
-	>>> sudoku.generate("medium")
-	"8.4.71.9.976.3....5.196....3.7495...692183...4.5726..92483591..169847...753612984"
-	 
-	>>> sudoku.generate("hard")
-	".17..69..356194.2..89..71.6.65...273872563419.43...685521......798..53..634...59."
-*/
-
-    render() {
-
-        return (
+		return (
 			<div className="App">
 				<h1>Sudoku</h1>
-				<Board value={console.log(this.state.board.split(""))}/>
+
+				<select
+					name='select'
+					onChange={this.handleChange}
+					value={this.state.level}
+				>
+					<option value="easy">Baby</option>
+					<option value="medium">Junior</option>
+					<option value="hard">Teenager</option>
+					<option value="very-hard">Student</option>
+					<option value="insane">Graduate</option>
+					<option value="inhuman">Adult</option>
+				</select>
+
+				<Board
+					onSubmit={this.handleSubmit}
+					board={this.state.board.split('')}
+					initialBoard={this.state.initialBoard.split('')}
+					onChange={this.handleInputValue}
+				/>
+
 				<div className="buttons">
-					<button>Check</button>
-					<button onClick= {this.generate} >New Game </button>
-					<button onClick= {this.solve}>Solve</button>
-					<button onClick= {this.reset}>Reset</button>
+					<button onClick={this.check}>Check</button>
+					<button onClick={this.generate}>New Game </button>
+					<button onClick={this.solve}>Solve</button>
+					<button onClick={this.reset}>Reset</button>
 				</div>
 			</div>
-        );
-    }
+		);
+	}
 }
 
 export default hot(module)(App);
