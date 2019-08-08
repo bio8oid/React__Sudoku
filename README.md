@@ -1,4 +1,4 @@
 # Sudoku
 
 
-[Play](https://bio8oid.github.io/25.8/build/)
+[Play](https://sudoku-game.netlify.com/)
