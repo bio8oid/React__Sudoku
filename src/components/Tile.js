@@ -1,12 +1,20 @@
 import React from 'react';
-import style from './Tile.css';
+import './Tile.css';
 
 
 const Tile = props => 
 
 	<>
-        <input id={props.id} onChange={props.onChange} value={props.value} key={props.id} type="number"  min="1" max="9" ></input>
+        <input
+        id={props.id} 
+        onChange={props.onChange} 
+        value={props.value} 
+        key={props.id} 
+        type="number"  
+        min="1" 
+        max="9" 
+        className={props.className}
+        ></input>
     </>
 
 export default Tile;
-

@@ -1,31 +1,31 @@
 import React from 'react';
-//import style from '../containers/Board.css';
+import './Board.css';
 import Tile from './Tile';
 
 
-const Board = props => 
+const disabled = 'disabled'
 
-	<div>
+const Board = props => 
+<div className="board">
+        <div id='start-shadow' className=''></div>
          {
-            props.board.map((tile, index) => {
-                if (tile === ".") {
-                    tile = "";
-                }
-                return (
-                    <Tile
+             props.board.map((tile, index, className) => {
+                    if (tile === ".") {
+                        tile = "" && className == "enabled"
+                    }else{
+                        className = "disabled"
+                        }
+                    
+                    return (
+                        <Tile
                         value={tile}
                         key={index}
                         id={index}
                         onChange={props.onChange}
-                        initialBoard={props.initialBoard.key}
-                    />
-                )
-            })}
+                        className={className}
+                        />
+                        )
+                    })}
     </div>
 
 export default Board;
-
-
-/*
-Komponent Board powinien renderować 81 komponentów Tile - jedno dla każdego pola. Ponieważ Board będzie dostawał stan planszy jako stringa, użyj funkcji split, aby zamienić go na tablicę. Następnie użyj metody map, żeby wartości zamienić na komponenty Tile.
-*/

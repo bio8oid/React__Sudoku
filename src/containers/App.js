@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import uuid from 'uuid';
 import { hot } from 'react-hot-loader';
-//import style from './App.css';
+import './App.css';
 import Board from '../components/Board';
 import sudoku from 'sudoku-umd';
 
@@ -18,7 +17,8 @@ class App extends Component {
 	}
 
 	generate = () => {
-		const generateState = sudoku.generate(this.state.level)
+		document.getElementById('start-shadow').classList.add('shadow');
+		const generateState = sudoku.generate(this.state.level);
 		this.setState({
 			initialBoard: generateState,
 			board: generateState
@@ -35,13 +35,16 @@ class App extends Component {
 	}
 	
 	check = () => {
-		const checked = sudoku.solve(this.state.board)
-		if (checked) {
+		const string = this.state.board;
+		const checked = sudoku.solve(string)
+		if  ((string.indexOf('.')) > -1 && checked) {
 			alert('All good !!! Keep going this way')
-		}else (
+		}else if  (string === checked){
+			alert("CONGRATULATIONS!!! You're not retarded ")
+		}else {
 			alert('You lame!')
-			)
 		}
+	}
 		
 		
 		handleChange = event => {
@@ -59,6 +62,7 @@ class App extends Component {
 			console.log("id " + inputId)
 			console.log("inputValue " + inputValue)
 			console.log("present board state " + this.state.board)
+			console.log("solved " + sudoku.solve(this.state.board))
 			
 			this.setState({
 				board: newArray.join("")
@@ -71,16 +75,16 @@ class App extends Component {
 				}
 		
 		render() {
-			console.log('New state board ' + this.state.board)
 
 		return (
-			<div className="App">
-				<h1>Sudoku</h1>
-
+			<div className="main">
+				<div className='title'></div>
+				
 				<select
 					name='select'
 					onChange={this.handleChange}
 					value={this.state.level}
+					className="drop-down"
 				>
 					<option value="easy">Baby</option>
 					<option value="medium">Junior</option>
@@ -103,6 +107,8 @@ class App extends Component {
 					<button onClick={this.solve}>Solve</button>
 					<button onClick={this.reset}>Reset</button>
 				</div>
+
+				
 			</div>
 		);
 	}
