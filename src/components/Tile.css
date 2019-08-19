@@ -11,9 +11,6 @@ input {
 	border-radius: 10px;
 }
 
-.backgroundChange {
-	background: red;
-}
 .disabled {
 background: #efefef;
 pointer-events: none;

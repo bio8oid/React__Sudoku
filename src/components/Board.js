@@ -2,16 +2,15 @@ import React from 'react';
 import './Board.css';
 import Tile from './Tile';
 
-
-const disabled = 'disabled'
-
 const Board = props => 
 <div className="board">
         <div id='start-shadow' className=''></div>
          {
              props.board.map((tile, index, className) => {
                     if (tile === ".") {
-                        tile = "" && className == "enabled"
+                        tile = ""
+                    }else if ( tile !== props.initialBoard[index]){
+                        className == "enabled"
                     }else{
                         className = "disabled"
                         }
@@ -23,6 +22,7 @@ const Board = props =>
                         id={index}
                         onChange={props.onChange}
                         className={className}
+                        initialBoard={props.initialBoard}
                         />
                         )
                     })}

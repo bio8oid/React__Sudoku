@@ -30,7 +30,7 @@ class App extends Component {
 		if(solved) {
 			this.setState({ board: solved});
 		}else{
-			alert('There must be error in your solution...')
+			alert('There must be an error in your solution...')
 		}
 	}
 	
@@ -45,7 +45,6 @@ class App extends Component {
 			alert('You lame!')
 		}
 	}
-		
 		
 		handleChange = event => {
 			this.setState({ level: event.target.value });
@@ -108,7 +107,6 @@ class App extends Component {
 					<button onClick={this.reset}>Reset</button>
 				</div>
 
-				
 			</div>
 		);
 	}
