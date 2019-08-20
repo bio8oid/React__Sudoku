@@ -85,7 +85,7 @@ class App extends Component {
 					value={this.state.level}
 					className="drop-down"
 				>
-					<option value="easy">Baby</option>
+					<option value="easy">Toddler</option>
 					<option value="medium">Junior</option>
 					<option value="hard">Teenager</option>
 					<option value="very-hard">Student</option>

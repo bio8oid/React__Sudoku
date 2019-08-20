@@ -58,3 +58,9 @@ button {
     border-radius: 10px;
     font-size: 22px;
 }
+
+button:hover {
+    transform: scale(1.05);
+    transition: 1s;
+    background: rgb(138, 26, 28);
+        }

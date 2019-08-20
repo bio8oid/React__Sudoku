@@ -9,8 +9,8 @@ const Board = props =>
              props.board.map((tile, index, className) => {
                     if (tile === ".") {
                         tile = ""
-                    }else if ( tile !== props.initialBoard[index]){
-                        className == "enabled"
+                    }else if( tile !== props.initialBoard[index]){
+                        className = "enabled"
                     }else{
                         className = "disabled"
                         }
