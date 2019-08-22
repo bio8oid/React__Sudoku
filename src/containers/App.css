@@ -59,8 +59,13 @@ button {
     font-size: 22px;
 }
 
-button:hover {
-    transform: scale(1.05);
-    transition: 1s;
-    background: rgb(138, 26, 28);
-        }
+button:hover{ 
+    animation: shake 200ms;
+    animation-timing-function: linear;   
+  }
+  
+  @keyframes shake {
+    0% { transform: rotate(1deg); }
+    50% { transform: rotate(-10deg); }
+    100% { transform: rotate(10deg); }
+  }
