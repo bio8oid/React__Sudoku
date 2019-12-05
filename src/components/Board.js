@@ -4,7 +4,7 @@ import Tile from './Tile';
 
 const Board = props => 
 <div className="board">
-        <div id='start-shadow' className=''></div>
+        <div id='start-shadow'></div>
          {
              props.board.map((tile, index, className) => {
                     if (tile === ".") {

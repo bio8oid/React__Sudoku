@@ -4,9 +4,9 @@ const OptimizeJsPlugin = require('optimize-js-plugin');
 
 const plugins = [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      filename: 'index.html',
-      inject: 'body'
+        template: 'src/index.html',
+        filename: 'index.html',
+        inject: 'body'
     })
 ];
 
@@ -31,42 +31,49 @@ module.exports = (env) => {
 
         module: {
             rules: [
-            {
-                test: /\.js$/,
-                loader: "babel-loader",
-                options: {
-                    plugins: env !== 'production' ? ["react-hot-loader/babel"] : []
-                }
-            },
-            {
-              test: /\.(gif|png|jpe?g|svg|webp)$/i,
-              use: [
-                'file-loader',
                 {
-                  loader: 'image-webpack-loader',
-                  options: {
-                    bypassOnDebug: true, // webpack@1.x
-                    disable: true, // webpack@2.x and newer
-                  },
-                },
-              ],
-            },
-            {
-                test: /\.css$/,
-                use: [
-                { loader: 'style-loader'
-            },
-            {
-                    loader: 'css-loader',
+                    test: /\.js$/,
+                    loader: "babel-loader",
                     options: {
-                        modules: false
+                        plugins: env !== 'production' ? ["react-hot-loader/babel"] : []
                     }
                 },
+                {
+                    test: /\.(gif|png|jpe?g|svg|webp)$/i,
+                    use: [
+                        'file-loader',
+                        {
+                            loader: 'image-webpack-loader',
+                            options: {
+                                bypassOnDebug: true, // webpack@1.x
+                                disable: true, // webpack@2.x and newer
+                            },
+                        },
+                    ],
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        {
+                            loader: 'style-loader'
+                        },
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: false
+                            }
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: process.env.NODE_ENV !== 'production'
+                            }
+                        }
 
-                ]
-            }
+                    ]
+                }
             ]
         },
-    plugins
+        plugins
     }
 };
