@@ -40,7 +40,7 @@ class App extends Component {
 		if  ((string.indexOf('.')) > -1 && checked) {
 			alert('All good !!! Keep going this way')
 		}else if  (string === checked){
-			alert("CONGRATULATIONS!!! You're not retarded ")
+			alert("CONGRATULATIONS!!!")
 		}else {
 			alert('You lame!')
 		}
