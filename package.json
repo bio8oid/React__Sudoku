@@ -1,24 +1,17 @@
 {
-  "name": "20.3",
+  "name": "Sudoku Game",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sudoku Game",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --hot --env development",
     "build": "webpack --env production"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bio8oid/20.3.git"
-  },
   "keywords": [],
-  "author": "",
+  "author": "bio8oid",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bio8oid/20.3/issues"
-  },
-  "homepage": "https://github.com/bio8oid/20.3#readme",
+
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.3.3",
