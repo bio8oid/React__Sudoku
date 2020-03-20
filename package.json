@@ -1,6 +1,8 @@
 {
-  "name": "Sudoku Game",
+  "name": "8",
   "version": "1.0.0",
+  "author": "bio8oid",
+  "license": "ISC",
   "description": "Sudoku Game",
   "main": "index.js",
   "scripts": {
@@ -8,10 +10,6 @@
     "start": "webpack-dev-server --hot --env development",
     "build": "webpack --env production"
   },
-  "keywords": [],
-  "author": "bio8oid",
-  "license": "ISC",
-
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.3.3",
