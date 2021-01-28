@@ -1,5 +1,5 @@
 # Sudoku
-#### React App made with Webpack
+#### React App - Webpack
 
 
 [Play](https://sudoku-game.netlify.com/)
